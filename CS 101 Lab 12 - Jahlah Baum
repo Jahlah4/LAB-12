@@ -1,0 +1,77 @@
+import turtle
+
+class Point:
+  def__init__(self,x,y,color):
+    self.x = x
+    self.y = y
+    self.color = color 
+
+  def draw(self): 
+    turtle.penup()
+    turtle.goto(self.x, self.y)
+    turtle.pendown()
+    turtle.color(self.color)
+    turtle.setheading(0)
+    self.draw_action() 
+
+  def draw_action(self):
+    turtle.dot()
+
+class Box(Point):
+  def__init__(self,x,y, width, height, color):
+    super().__init__(x,y,color) 
+    self.width = width 
+    self.height = height 
+
+  def draw_action(self): 
+    for _ in range(2): 
+      turtle.forward(self.width)
+      turtle.right(90)
+      turtle.forward(self.height)
+      turtle.right(90)
+    turtle.end_fill() 
+
+class BoxFilled(Box): 
+  def__init__(self,x,y, width, height, color, fill_color):
+    super().__init__(x,y, width, height, color) 
+    self.fill_color = fill_color 
+
+  def draw_action(self):
+    turtle.begin_fill()
+    turtle.fillcolor(self.fill_color) 
+    for _ in range(2):
+      turtle.forward(self.width) 
+      turtle.right(90)
+      turtle.forward(self.height) 
+      turtle.right(90)
+    turtle.end_fill()
+
+class Circle(Point):
+  def__init__(self, x, y, radius, color):
+    super().__init__(x,y,color)
+    self.radius = radius
+
+  def draw_action(self):
+    tutle.circle(self.radius)
+
+class CircleFilled(Circle):
+  def__init__(self, x, y, radius, color, fill_color):
+    super().__init__(x, y, radius, color)
+    self.fill_color = fill_color
+
+  def draw_action(self): 
+    turtle.begin_fill()
+    turtle.fillcolor(self.fill_color)
+    turtle.circle(self.radius0
+    turtle.end_fill()
+
+b = Box(-100, 100, 50, 40, "red"
+b.draw()
+
+bf = BoxFilled(100, 110, 50, 40, "blue", "green") 
+bf.draw()
+
+c = CircleFilled(-50, -50, 20, "purple", "yellow")
+cf.draw()
+
+turtle.done()
